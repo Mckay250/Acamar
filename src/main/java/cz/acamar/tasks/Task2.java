@@ -18,6 +18,35 @@ public class Task2 {
      * @return - an array of the squares of each number sorted in non-decreasing order
      */
     public int[] squaresOfSortedArray(int[] input) {
-        return null;
+        // to store the result of computation
+        int[] result = new int[input.length];
+        int left_pointer = 0;
+        int right_pointer = input.length - 1;
+        int idx = right_pointer;
+
+        // visiting each number in the input with left and right pointers
+        while(left_pointer <= right_pointer) {
+            // value of the square of number at the left pointer
+            int a = input[left_pointer] * input[left_pointer];
+            // value of the square of number at the right pointer
+            int b = input[right_pointer] * input[right_pointer];
+
+            // if the square value at the left is greater than that at the right
+            if(a > b) {
+                // add the value to the result variable
+                result[idx] = a;
+                // move the pointer forward
+                left_pointer++;
+            // if the square value at the right is greater than that at the left
+            } else {
+                // add the value to the result variable
+                result[idx] = b;
+                // move the pointer backward
+                right_pointer--;
+            }
+            idx--;
+        }
+        // return the computed result
+        return result;
     }
 }
